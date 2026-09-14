@@ -12,7 +12,7 @@ const PROJETOS = [
     paleta: ['#17120F', '#E8501F', '#F2B233', '#B8241C', '#F5EBDC'],
     fundo: '#17120F', corTexto: '#F5EBDC',
     etiquetas: ['7 páginas', 'Carrinho', 'Checkout', 'Página NFC'],
-    link: 'https://byb-chapaeforno.netlify.app'
+    link: 'https://chapaeforno.byb.dev.br'
   },
   {
     id: 'aurora',
@@ -23,7 +23,7 @@ const PROJETOS = [
     paleta: ['#FBFAF7', '#1C2B2D', '#2E6E6B', '#A8D5CE', '#C9A961'],
     fundo: '#1C2B2D', corTexto: '#FBFAF7',
     etiquetas: ['8 páginas', 'Agendamento', 'Arco interativo', 'FAQ'],
-    link: 'https://byb-aurora.netlify.app'
+    link: 'https://aurora.byb.dev.br'
   },
   {
     id: 'jabuticaba',
@@ -34,7 +34,7 @@ const PROJETOS = [
     paleta: ['#2E1437', '#8FC93A', '#E8447C', '#FFC93C', '#FFF8EE'],
     fundo: '#2E1437', corTexto: '#FFF8EE',
     etiquetas: ['8 páginas', 'Montador', 'Preço ao vivo', '3 unidades'],
-    link: 'https://byb-jabuticaba.netlify.app'
+    link: 'https://jabuticaba.byb.dev.br'
   },
   {
     id: 'fio',
@@ -45,7 +45,7 @@ const PROJETOS = [
     paleta: ['#221A17', '#B5462F', '#C2955A', '#2C5F8A', '#F0EAE1'],
     fundo: '#221A17', corTexto: '#F0EAE1',
     etiquetas: ['8 páginas', 'Agendamento', 'Guia de estilos', 'Poste animado'],
-    link: 'https://byb-barbearia.netlify.app'
+    link: 'https://barbearia.byb.dev.br'
   }
 ];
 
