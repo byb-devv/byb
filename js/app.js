@@ -302,22 +302,47 @@ function montarFormulario() {
     const nome = (dados.get('nome') || '').trim().split(' ')[0] || 'você';
 
     try {
-      await fetch('/', {
+      const resposta = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(dados).toString()
+        headers: { 'Accept': 'application/json' },
+        body: dados
       });
-      mostrarConfirmacao(nome, dados);
+      const json = await resposta.json();
+
+      if (json.success) {
+        mostrarConfirmacao(nome, dados);
+      } else {
+        throw new Error(json.message || 'falhou');
+      }
     } catch (erro) {
       botao.disabled = false;
       botao.innerHTML = textoOriginal;
-      avisar('Não deu para enviar. Chama no WhatsApp que a gente responde na hora.');
+      oferecerWhatsapp(dados);
     }
   });
 }
 
+/* Se o envio falhar, leva a conversa para o WhatsApp em vez de perder o contato. */
+function oferecerWhatsapp(dados) {
+  const linhas = [
+    'Oi! Mandei pelo site mas parece que não foi.',
+    '',
+    'Nome: ' + (dados.get('nome') || ''),
+    dados.get('negocio') ? 'Negócio: ' + dados.get('negocio') : '',
+    dados.get('interesse') ? 'Interesse: ' + dados.get('interesse') : '',
+    dados.get('mensagem') ? '' : '',
+    dados.get('mensagem') || ''
+  ].filter(l => l !== '' || true);
+
+  const texto = encodeURIComponent(linhas.filter(Boolean).join('\n'));
+  avisar('Não deu para enviar. Abrindo o WhatsApp...');
+  setTimeout(() => {
+    window.open('https://wa.me/5537999071654?text=' + texto, '_blank', 'noopener');
+  }, 900);
+}
+
 function mostrarConfirmacao(nome, dados) {
-  const zap = 'https://wa.me/5537998277488';
+  const zap = 'https://wa.me/5537999071654';
   const resumo = [
     dados.get('negocio') ? `Negócio: ${dados.get('negocio')}` : '',
     dados.get('interesse') ? `Interesse: ${dados.get('interesse')}` : ''
