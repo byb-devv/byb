@@ -300,6 +300,13 @@ function montarFormulario() {
 
     const dados = new FormData(form);
     const nome = (dados.get('nome') || '').trim().split(' ')[0] || 'você';
+    const chave = (dados.get('access_key') || '').trim();
+
+    // Sem chave configurada, nem tenta: vai direto para o WhatsApp.
+    if (!chave || chave === 'COLE_A_CHAVE_AQUI') {
+      irParaWhatsapp(dados, botao, textoOriginal);
+      return;
+    }
 
     try {
       const resposta = await fetch('https://api.web3forms.com/submit', {
@@ -312,33 +319,57 @@ function montarFormulario() {
       if (json.success) {
         mostrarConfirmacao(nome, dados);
       } else {
-        throw new Error(json.message || 'falhou');
+        throw new Error(json.message || 'envio recusado');
       }
     } catch (erro) {
-      botao.disabled = false;
-      botao.innerHTML = textoOriginal;
-      oferecerWhatsapp(dados);
+      irParaWhatsapp(dados, botao, textoOriginal);
     }
   });
 }
 
-/* Se o envio falhar, leva a conversa para o WhatsApp em vez de perder o contato. */
-function oferecerWhatsapp(dados) {
-  const linhas = [
-    'Oi! Mandei pelo site mas parece que não foi.',
+/* Quando o envio por e-mail não rola, a conversa segue pelo WhatsApp
+   em vez de o contato se perder. */
+function irParaWhatsapp(dados, botao, textoOriginal) {
+  const partes = [
+    'Olá! Vim pelo site do by.b.',
     '',
     'Nome: ' + (dados.get('nome') || ''),
+    dados.get('whatsapp') ? 'WhatsApp: ' + dados.get('whatsapp') : '',
     dados.get('negocio') ? 'Negócio: ' + dados.get('negocio') : '',
     dados.get('interesse') ? 'Interesse: ' + dados.get('interesse') : '',
-    dados.get('mensagem') ? '' : '',
-    dados.get('mensagem') || ''
-  ].filter(l => l !== '' || true);
+    dados.get('mensagem') ? '\n' + dados.get('mensagem') : ''
+  ].filter(Boolean);
 
-  const texto = encodeURIComponent(linhas.filter(Boolean).join('\n'));
-  avisar('Não deu para enviar. Abrindo o WhatsApp...');
-  setTimeout(() => {
-    window.open('https://wa.me/5537999071654?text=' + texto, '_blank', 'noopener');
-  }, 900);
+  const link = 'https://wa.me/5537999071654?text=' + encodeURIComponent(partes.join('\n'));
+
+  if (botao) {
+    botao.disabled = false;
+    botao.innerHTML = textoOriginal;
+  }
+
+  const area = document.querySelector('#area-contato');
+  if (area) {
+    area.innerHTML = `
+      <section class="confirmacao">
+        <div class="painel">
+          <div class="marca-ok">Vamos pelo WhatsApp</div>
+          <p>Seus dados já estão prontos numa mensagem. É só tocar no botão abaixo
+             e enviar — a gente responde por lá.</p>
+          <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:24px">
+            <a class="btn btn-zap" href="${link}" target="_blank" rel="noopener">
+              Abrir o WhatsApp
+            </a>
+            <a class="btn btn-contorno" href="index.html">Voltar ao início</a>
+          </div>
+          <p style="font-size:.85rem;color:var(--giz-4);margin-top:22px;margin-bottom:0">
+            Se preferir, escreva direto para devv.byb@gmail.com
+          </p>
+        </div>
+      </section>`;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } else {
+    window.open(link, '_blank', 'noopener');
+  }
 }
 
 function mostrarConfirmacao(nome, dados) {
