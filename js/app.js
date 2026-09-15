@@ -303,7 +303,7 @@ function montarFormulario() {
     const chave = (dados.get('access_key') || '').trim();
 
     // Sem chave configurada, nem tenta: vai direto para o WhatsApp.
-    if (!chave || chave === '283d901a-fc6f-4c50-b9d1-c0d4831977a0') {
+    if (!chave || chave === 'COLE_A_CHAVE_AQUI') {
       irParaWhatsapp(dados, botao, textoOriginal);
       return;
     }
