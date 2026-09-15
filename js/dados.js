@@ -23,7 +23,7 @@ const PROJETOS = [
     paleta: ['#FBFAF7', '#1C2B2D', '#2E6E6B', '#A8D5CE', '#C9A961'],
     fundo: '#1C2B2D', corTexto: '#FBFAF7',
     etiquetas: ['8 páginas', 'Agendamento', 'Arco interativo', 'FAQ'],
-    link: 'https://aurora.byb.dev.br'
+    link: 'https://clinica.byb.dev.br'
   },
   {
     id: 'jabuticaba',

@@ -7,10 +7,35 @@
 function montarMenu() {
   const botao = document.querySelector('.btn-menu');
   const nav = document.querySelector('.nav');
+
   if (botao && nav) {
+    function abrir(sim) {
+      nav.classList.toggle('aberta', sim);
+      botao.setAttribute('aria-expanded', String(sim));
+      botao.setAttribute('aria-label', sim ? 'Fechar menu' : 'Abrir menu');
+      document.body.classList.toggle('menu-aberto', sim);
+    }
+
     botao.addEventListener('click', () => {
-      const aberta = nav.classList.toggle('aberta');
-      botao.setAttribute('aria-expanded', aberta);
+      abrir(botao.getAttribute('aria-expanded') !== 'true');
+    });
+
+    // clicar num link fecha
+    nav.addEventListener('click', e => {
+      if (e.target.closest('a')) abrir(false);
+    });
+
+    // Esc fecha
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && botao.getAttribute('aria-expanded') === 'true') {
+        abrir(false);
+        botao.focus();
+      }
+    });
+
+    // voltar pro desktop fecha
+    window.matchMedia('(min-width: 721px)').addEventListener('change', ev => {
+      if (ev.matches) abrir(false);
     });
   }
 
@@ -352,9 +377,9 @@ function destacarAlvo() {
       setTimeout(() => {
         lista.classList.remove('focando');
         alvo.classList.remove('destacado');
-      }, 1800);
-    }, reduzido ? 0 : 620);
-  }, 380);
+      }, 1500);
+    }, reduzido ? 0 : 330);
+  }, 120);
 }
 
 /* ---------- Revelacao por palavra ---------- */
