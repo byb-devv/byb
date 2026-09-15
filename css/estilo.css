@@ -395,6 +395,33 @@ p { margin: 0 0 1.15em; max-width: 62ch; color: var(--giz-2); }
   line-height: 1; margin: 18px 0 6px; letter-spacing: -0.04em;
 }
 .pacote .obs { font-size: .84rem; color: var(--giz-4); margin-bottom: 26px; }
+.pacote.sem-preco .valor { font-size: 1.9rem; color: var(--giz-2); }
+
+/* ---------- Manutencao como adicional ---------- */
+
+.adicional-manutencao {
+  margin-top: 26px;
+  background: var(--fundo-2); border: 1px solid var(--linha);
+  border-radius: var(--raio); padding: 30px 32px;
+}
+.adicional-manutencao h3 { margin-bottom: .4em; }
+.adicional-manutencao > p { color: var(--giz-3); }
+.niveis {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+  background: var(--linha); border: 1px solid var(--linha);
+  border-radius: var(--raio-p); overflow: hidden; margin-top: 22px;
+}
+.nivel { background: var(--fundo); padding: 22px 22px 24px; }
+.nivel .v {
+  font-family: var(--fonte-display); font-weight: 700; font-size: 1.7rem;
+  letter-spacing: -0.04em; line-height: 1; margin-bottom: 5px;
+}
+.nivel .q {
+  font-size: .76rem; color: var(--giz-4); margin-bottom: 12px;
+  letter-spacing: .08em; text-transform: uppercase;
+}
+.nivel p { font-size: .9rem; color: var(--giz-3); margin: 0; }
+@media (max-width: 560px) { .niveis { grid-template-columns: 1fr; } }
 
 .lista-check { list-style: none; padding: 0; margin: 0 0 28px; flex: 1; }
 .lista-check li {

@@ -67,12 +67,12 @@ const SERVICOS = [
 const PACOTES = [
   {
     fita: 'Entrada',
-    nome: 'Cardápio',
+    nome: 'Básico',
     valor: 'R$ 350',
     obs: 'A partir de, pagamento único',
     itens: [
       'Cardápio digital de uma página',
-      'Abre por QR Code',
+      'Abre por QR Code e por NFC',
       'Duas placas NFC impressas em 3D',
       'Hospedagem incluída',
       'Uma rodada de ajustes'
@@ -96,21 +96,20 @@ const PACOTES = [
     destaque: true
   },
   {
-    fita: 'Contínuo',
-    nome: 'Completo + manutenção',
-    valor: 'R$ 950',
-    obs: 'A partir de, mais a mensalidade',
-    niveis: [
-      { v: 'R$ 50', q: 'por mês', p: 'Até 4 alterações por mês. Resposta em até 2 dias.' },
-      { v: 'R$ 80', q: 'por mês', p: 'Alterações ilimitadas. Resposta no mesmo dia.' }
-    ],
+    fita: 'Projeto próprio',
+    nome: 'Sob medida',
+    valor: 'Sob consulta',
+    obs: 'Orçamento fechado após a conversa',
     itens: [
-      'Tudo do pacote Completo',
-      'Troca de preço, foto e item do cardápio',
-      'Ajuste de horário e feriado',
-      'Sem fidelidade, cancela quando quiser'
+      'Para quem precisa de algo específico',
+      'Sistema de pedido com fluxo próprio',
+      'Mais de uma unidade ou filial',
+      'Integração com ferramenta que você já usa',
+      'Quantidade de placas conforme o espaço',
+      'Rodadas de ajuste combinadas no escopo'
     ],
-    destaque: false
+    destaque: false,
+    semPreco: true
   }
 ];
 

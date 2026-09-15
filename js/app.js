@@ -184,25 +184,16 @@ function montarPacotes() {
   const alvo = document.querySelector('#grade-pacotes');
   if (!alvo) return;
   alvo.innerHTML = PACOTES.map((p, i) => `
-    <article class="pacote ${p.destaque ? 'destaque' : ''} revela revela-${i + 1}">
+    <article class="pacote ${p.destaque ? 'destaque' : ''} ${p.semPreco ? 'sem-preco' : ''} revela revela-${i + 1}">
       <div class="fita">${p.fita}</div>
       <h3>${p.nome}</h3>
       <div class="valor">${p.valor}</div>
       <div class="obs">${p.obs}</div>
-      ${p.niveis ? `
-        <div class="niveis-manutencao">
-          ${p.niveis.map(n => `
-            <div class="nivel">
-              <div class="v">${n.v}</div>
-              <div class="q">${n.q}</div>
-              <p>${n.p}</p>
-            </div>`).join('')}
-        </div>` : ''}
       <ul class="lista-check">
         ${p.itens.map(t => `<li>${t}</li>`).join('')}
       </ul>
       <a class="btn ${p.destaque ? 'btn-claro' : 'btn-contorno'}" href="contato.html">
-        Pedir orçamento
+        ${p.semPreco ? 'Conversar sobre o projeto' : 'Pedir orçamento'}
       </a>
     </article>`).join('');
 }
