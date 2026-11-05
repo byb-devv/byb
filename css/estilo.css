@@ -11,8 +11,8 @@
 
   --giz:        #FBFAF9;
   --giz-2:      #B8B7B4;
-  --giz-3:      #7E8288;
-  --giz-4:      #575A60;
+  --giz-3:      #9A9EA4;
+  --giz-4:      #868A91;
 
   --azul:       #8CAFD6;
   --azul-2:     #A9C4E4;
@@ -869,3 +869,39 @@ p { margin: 0 0 1.15em; max-width: 62ch; color: var(--giz-2); }
   white-space: nowrap;
   border: 0;
 }
+
+
+/* ---------- Acessibilidade ---------- */
+.pular {
+  position: absolute; left: 12px; top: -60px; z-index: 200;
+  background: var(--giz); color: var(--fundo); padding: 10px 18px;
+  border-radius: var(--raio-p); font-weight: 600; text-decoration: none;
+}
+.pular:focus { top: 12px; }
+main:focus { outline: none; }
+.btn:focus-visible, .btn-menu:focus-visible { outline-offset: 3px; }
+
+/* ---------- Texto corrido (privacidade, placas) ---------- */
+.prosa { max-width: 70ch; }
+.prosa h2 { font-size: clamp(1.3rem, 2.4vw, 1.7rem); margin: 44px 0 14px; }
+.prosa p, .prosa li { color: var(--giz-2); line-height: 1.7; }
+.prosa ul { padding-left: 20px; margin: 0 0 16px; }
+.prosa li { margin-bottom: 8px; }
+.prosa a { color: var(--azul-2); }
+.prosa .data { color: var(--giz-4); font-size: .9rem; }
+.aviso-form { font-size: .82rem; color: var(--giz-3); text-align: center; margin: 14px 0 0; line-height: 1.5; }
+.aviso-form a { color: var(--azul-2); }
+.passos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin: 28px 0 0; padding: 0; list-style: none; }
+.passos li { background: var(--fundo-2); border: 1px solid var(--linha); border-radius: var(--raio); padding: 26px 24px; }
+.passos strong { display: block; color: var(--giz); font-family: var(--fonte-display); font-size: 1.08rem; margin-bottom: 8px; }
+.passos span { color: var(--giz-3); font-size: .95rem; line-height: 1.6; }
+.usos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 28px; }
+.usos .painel { padding: 28px 26px; }
+.usos h3 { margin-bottom: 10px; }
+.usos p { color: var(--giz-3); font-size: .96rem; margin: 0; }
+.preco-placa { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 28px; max-width: 760px; }
+.preco-placa .v { font-family: var(--fonte-display); font-weight: 800; font-size: 2.4rem; color: var(--giz); letter-spacing: -0.03em; }
+@media (max-width: 820px) { .passos, .usos, .preco-placa { grid-template-columns: 1fr; } }
+
+/* botao verde no rodape: mantem a cor propria */
+.rodape a.btn-zap, .rodape a.btn-zap:hover { color: #0A2E17; }
