@@ -55,7 +55,7 @@ const SERVICOS = [
   { n: '02', nome: 'Cardápio digital',
     desc: 'Abre por QR Code ou por aproximação NFC. Você atualiza preços e itens quando quiser, sem precisar imprimir nada novamente.' },
   { n: '03', nome: 'Placa NFC impressa em 3D',
-    desc: 'Feita por nós, na medida do seu balcão. O cliente aproxima o celular e é levado direto à avaliação do Google, ao seu Instagram ou ao cardápio. Vendemos também avulsa: R$ 80, ou 3 por R$ 210.', link: 'placas.html' },
+    desc: 'Feita por nós, na medida do seu balcão. O cliente aproxima o celular e é levado direto à avaliação do Google, ao seu Instagram, ao WhatsApp ou ao seu Pix. Vendemos também avulsa: R$ 80, ou 3 por R$ 200.', link: 'placas.html' },
   { n: '04', nome: 'WhatsApp configurado',
     desc: 'Mensagem automática de saudação, resposta fora do horário e atalhos prontos. O botão do site abre a conversa com o pedido já preenchido.' },
   { n: '05', nome: 'Hospedagem incluída',
