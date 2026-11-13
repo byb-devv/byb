@@ -138,7 +138,7 @@ const PERGUNTAS = [
   { p: 'O site é meu mesmo?',
     r: 'Sim. O domínio fica registrado no seu nome, os arquivos são seus e entregamos tudo ao final. Se um dia você quiser que outra pessoa assuma a manutenção, pode levar sem restrição alguma.' },
   { p: 'Como funciona a placa NFC?',
-    r: 'É uma peça pequena, modelada e impressa em 3D por nós, com um chip dentro. O cliente aproxima o celular e abre na hora o link que você escolher: a avaliação do Google, o Instagram ou o cardápio. Não é preciso instalar aplicativo, e funciona em qualquer celular com NFC — hoje, a grande maioria.' },
+    r: 'É uma peça pequena, modelada e impressa em 3D por nós, com um chip dentro. O cliente aproxima o celular e abre na hora o que você escolher: a avaliação do Google, o Instagram ou o WhatsApp. A placa de Pix vem em breve. Não é preciso instalar aplicativo, e funciona em qualquer celular com NFC — hoje, a grande maioria.' },
   { p: 'Vocês fazem para outros ramos além de alimentação?',
     r: 'Sim. Já desenvolvemos para clínica odontológica, oficina mecânica e barbearia. O que muda de um ramo para outro não é a parte técnica, mas entender qual é a objeção do cliente daquele setor e escrever o site a partir dela.' },
   { p: 'E se eu não gostar do resultado?',

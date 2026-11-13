@@ -893,3 +893,28 @@ main:focus { outline: none; }
 div.preco-resumo { cursor: default; }
 div.preco-resumo::after { display: none; }
 div.preco-resumo:hover { background: var(--fundo); }
+
+/* ---------- Galeria das placas ---------- */
+.galeria { display: grid; grid-template-columns: repeat(2, 1fr); gap: 34px 22px; }
+.galeria.tres { grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.galeria figure { margin: 0; }
+.galeria img {
+  display: block; width: 100%; height: auto;
+  border-radius: var(--raio); border: 1px solid var(--linha);
+  background: var(--fundo-2);
+}
+.galeria figcaption { padding-top: 16px; }
+.galeria h3 { margin: 0 0 6px; font-size: 1.25rem; }
+.galeria p { margin: 0; font-size: .95rem; color: var(--giz-3); }
+.selo {
+  display: inline-block; font-size: .7rem; font-weight: 600; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--azul); border: 1px solid var(--azul-linha);
+  border-radius: 99px; padding: 3px 10px; margin-left: 10px; vertical-align: middle;
+}
+@media (max-width: 820px) {
+  .galeria, .galeria.tres { grid-template-columns: 1fr; }
+}
+
+/* botao verde do rodape: letra preta; branca ao passar o mouse */
+.rodape a.btn-zap { color: #000; }
+.rodape a.btn-zap:hover { color: #fff; }

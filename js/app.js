@@ -301,7 +301,10 @@ function montarFormulario() {
 
     const dados = new FormData(form);
     const nome = (dados.get('nome') || '').trim().split(' ')[0] || 'você';
-    const chave = (dados.get('access_key') || '').trim();
+    // a chave fica em js/config.js; se nao estiver la, usa a do campo escondido
+    const doConfig = (window.BYB_CHAVE_WEB3FORMS || '').trim();
+    const chave = (doConfig && doConfig !== 'COLE_A_CHAVE_AQUI' ? doConfig : (dados.get('access_key') || '')).trim();
+    if (chave) dados.set('access_key', chave);
 
     // Sem chave configurada, nem tenta: vai direto para o WhatsApp.
     if (!chave || chave === 'COLE_A_CHAVE_AQUI') {
